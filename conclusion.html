@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Force Musculaire – Conclusion</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {font-family:'Roboto',sans-serif;margin:0;padding:0;background:#ffe6eb;color:#330000;}
+header {background:url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDEyfHxtdXNjbGV8ZW58MHx8fHwxNjc4ODU5MDk1&ixlib=rb-4.0.3&q=80&w=1200');background-size:cover;background-position:center;color:white;text-align:center;padding:80px 20px;}
+header h1 {margin:0;font-size:3em;text-shadow:2px 2px 5px #000;}
+header p {font-size:1.3em;text-shadow:1px 1px 3px #000;}
+section {padding:50px 20px;max-width:1000px;margin:auto;background:white;margin-bottom:25px;border-radius:15px;box-shadow:0 6px 15px rgba(0,0,0,0.2);opacity:0;transform:translateY(50px);transition:all 1s ease;}
+section.visible {opacity:1;transform:translateY(0);}
+h2 {color:#cc0033;margin-bottom:25px;font-size:2em;text-align:center;}
+.quiz {margin-top:30px;padding:25px;border:2px dashed #cc0033;border-radius:12px;background:#ffd6e0;text-align:center;}
+button {background:#cc0033;color:white;border:none;padding:12px 20px;cursor:pointer;border-radius:8px;margin:8px;font-size:1em;transition:0.3s;}
+button:hover {background:#990026;}
+nav {text-align:center;margin-top:30px;}
+nav a {text-decoration:none;color:white;background:#cc0033;padding:12px 25px;margin:10px;border-radius:10px;display:inline-block;transition:0.3s;}
+nav a:hover {background:#990026;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Conclusion de l'expérience</h1>
+<p>Analyse finale</p>
+</header>
+
+<section>
+<h2>Conclusion</h2>
+<p>La force dépend directement de la masse musculaire. L’entraînement augmente la force à masse égale grâce à une meilleure coordination des fibres. La fatigue réduit la capacité du muscle à se contracter. Les résultats confirment nos hypothèses et montrent l’importance du volume musculaire, de l’entraînement et du repos.</p>
+</section>
+
+<section>
+<div class="quiz">
+<strong>Quiz 1 :</strong> Quelle hypothèse est illustrée par la baisse de force après plusieurs essais ?<br>
+<button onclick="reponse('quiz1','Bonne')">Fatigue</button>
+<button onclick="reponse('quiz1','Mauvaise')">Masse musculaire</button>
+<button onclick="reponse('quiz1','Mauvaise')">Entraînement</button>
+<p id="feedback-quiz1"></p>
+</div>
+</section>
+
+<section>
+<div class="quiz">
+<strong>Quiz 2 :</strong> Qui aura plus de force à masse musculaire égale ?<br>
+<button onclick="reponse('quiz2','Bonne')">La personne entraînée</button>
+<button onclick="reponse('quiz2','Mauvaise')">La personne non sportive</button>
+<p id="feedback-quiz2"></p>
+</div>
+</section>
+
+<section>
+<div class="quiz">
+<strong>Quiz 3 :</strong> Si un participant a plus de masse musculaire mais n’est pas entraîné, sa force sera :<br>
+<button onclick="reponse('quiz3','Bonne')">Plus élevée qu’un faible muscle non entraîné</button>
+<button onclick="reponse('quiz3','Mauvaise')">Plus faible qu’un muscle entraîné mais moins volumineux</button>
+<p id="feedback-quiz3"></p>
+</div>
+</section>
+
+<nav>
+  <a href="resultats.html">← Page précédente : Résultats</a>
+  <a href="index.html">🏠 Retour à l'introduction</a>
+</nav>
+
+<script>
+function reponse(quizId, rep){
+  const feedback=document.getElementById('feedback-'+quizId);
+  if(rep==='Bonne') feedback.innerText='✅ Correct !';
+  else feedback.innerText='❌ Faux, essaie encore.';
+}
+
+const sections=document.querySelectorAll('section');
+window.addEventListener('scroll',()=>{
+  sections.forEach(section=>{
+    if(section.getBoundingClientRect().top<window.innerHeight*0.85) section.classList.add('visible');
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Force Musculaire – Résultats</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body {font-family:'Roboto',sans-serif;margin:0;padding:0;background:#ffe6eb;color:#330000;}
+header {background:url('https://images.unsplash.com/photo-1605296867304-46d5465a13f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMTc3M3wwfDF8c2VhcmNofDEyfHxtdXNjbGV8ZW58MHx8fHwxNjc4ODU5MDk1&ixlib=rb-4.0.3&q=80&w=1200');background-size:cover;background-position:center;color:white;text-align:center;padding:80px 20px;}
+header h1 {margin:0;font-size:3em;text-shadow:2px 2px 5px #000;}
+header p {font-size:1.3em;text-shadow:1px 1px 3px #000;}
+section {padding:50px 20px;max-width:1000px;margin:auto;background:white;margin-bottom:25px;border-radius:15px;box-shadow:0 6px 15px rgba(0,0,0,0.2);opacity:0;transform:translateY(50px);transition:all 1s ease;}
+section.visible {opacity:1;transform:translateY(0);}
+h2 {color:#cc0033;margin-bottom:25px;font-size:2em;text-align:center;}
+canvas {max-width:100%;margin-top:25px;}
+nav {text-align:center;margin-top:30px;}
+nav a {text-decoration:none;color:white;background:#cc0033;padding:12px 25px;margin:10px;border-radius:10px;display:inline-block;transition:0.3s;}
+nav a:hover {background:#990026;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Résultats de l'expérience</h1>
+<p>Graphiques des forces</p>
+</header>
+
+<section>
+<h2>Graphique : Force vs Participants</h2>
+<canvas id="graphiqueMasse"></canvas>
+</section>
+
+<section>
+<h2>Graphique : Force vs Essais (Fatigue)</h2>
+<canvas id="graphiqueFatigue"></canvas>
+</section>
+
+<nav>
+<a href="protocole.html">← Page précédente : Protocole</a>
+<a href="conclusion.html">→ Page suivante : Conclusion</a>
+</nav>
+
+<script>
+const ctxMasse = document.getElementById('graphiqueMasse').getContext('2d');
+new Chart(ctxMasse,{
+  type:'bar',
+  data:{
+    labels:['Personne 1','Personne 2','Personne 3','Personne 4','Personne 5'],
+    datasets:[{
+      label:'Force (kg)',
+      data:[22,26,30,34,38],
+      backgroundColor:'rgba(204,0,51,0.6)',
+      borderColor:'rgba(204,0,51,1)',
+      borderWidth:1
+    }]
+  },
+  options:{scales:{y:{beginAtZero:true,suggestedMax:40}}}
+});
+
+const ctxFatigue = document.getElementById('graphiqueFatigue').getContext('2d');
+new Chart(ctxFatigue,{
+  type:'line',
+  data:{
+    labels:['Essai 1','Essai 2','Essai 3','Essai 4','Essai 5'],
+    datasets:[{
+      label:'Force (kg)',
+      data:[30,28,26,24,22],
+      backgroundColor:'rgba(204,0,51,0.2)',
+      borderColor:'rgba(204,0,51,1)',
+      borderWidth:3,
+      fill:true,
+      tension:0.3
+    }]
+  },
+  options:{scales:{y:{beginAtZero:false,suggestedMin:20,suggestedMax:35}}}
+});
+
+const sections=document.querySelectorAll('section');
+window.addEventListener('scroll',()=>{
+  sections.forEach(section=>{
+    if(section.getBoundingClientRect().top<window.innerHeight*0.85) section.classList.add('visible');
+  });
+});
+</script>
+</body>
+</html>
