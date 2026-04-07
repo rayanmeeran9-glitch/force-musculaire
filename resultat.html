@@ -35,12 +35,7 @@ nav a:hover {background:#990026;}
 <h2>Graphique : Force vs Essais (Fatigue)</h2>
 <canvas id="graphiqueFatigue"></canvas>
 </section>
-
-<nav>
-<a href="protocole.html">← Page précédente : Protocole</a>
-<a href="conclusion.html">→ Page suivante : Conclusion</a>
-</nav>
-
+  
 <script>
 const ctxMasse = document.getElementById('graphiqueMasse').getContext('2d');
 new Chart(ctxMasse,{
@@ -75,7 +70,12 @@ new Chart(ctxFatigue,{
   },
   options:{scales:{y:{beginAtZero:false,suggestedMin:20,suggestedMax:35}}}
 });
-
+  
+<div style="text-align:center;margin-bottom:50px;">
+<button onclick="location.href='protocole.html'">Page précédente : Protocole</button>
+<button onclick="location.href='conclusion.html'">Page suivante : Conclusion</button>
+</div>
+  
 const sections=document.querySelectorAll('section');
 window.addEventListener('scroll',()=>{
   sections.forEach(section=>{
